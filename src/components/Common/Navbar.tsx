@@ -28,22 +28,34 @@ const Navbar = () => {
         {/* Logo */}
         <div>
           <Link to="/" className="text-2xl font-medium">
-            Karkhna
+            Kar-Khana
           </Link>
         </div>
 
         {/* Navigation Links */}
         <div className="hidden md:flex space-x-6">
-          <Link to="#" className="text-gray-700 hover:text-black text-sm font-medium uppercase">
+          <Link
+            to="#"
+            className="text-gray-700 hover:text-black text-sm font-medium uppercase"
+          >
             Men
           </Link>
-          <Link to="#" className="text-gray-700 hover:text-black text-sm font-medium uppercase">
+          <Link
+            to="#"
+            className="text-gray-700 hover:text-black text-sm font-medium uppercase"
+          >
             Women
           </Link>
-          <Link to="#" className="text-gray-700 hover:text-black text-sm font-medium uppercase">
+          <Link
+            to="#"
+            className="text-gray-700 hover:text-black text-sm font-medium uppercase"
+          >
             Topwear
           </Link>
-          <Link to="#" className="text-gray-700 hover:text-black text-sm font-medium uppercase">
+          <Link
+            to="#"
+            className="text-gray-700 hover:text-black text-sm font-medium uppercase"
+          >
             Bottomwear
           </Link>
         </div>
@@ -55,7 +67,10 @@ const Navbar = () => {
           </Link>
 
           {/* Cart Drawer Toggle */}
-          <button onClick={toggleCartDrawer} className="relative hover:text-black">
+          <button
+            onClick={toggleCartDrawer}
+            className="relative hover:text-black"
+          >
             <HiOutlineShoppingBag className="h-6 w-6 text-gray-700" />
             <span className="absolute -top-1 right-0 bg-amber-700 text-white text-xs rounded-full px-2 py-0.5">
               3
@@ -92,16 +107,28 @@ const Navbar = () => {
         {/* Example Mobile Menu Items */}
         <div className="flex flex-col items-start space-y-4 px-6">
           <h2 className="text-xl font-semibold mb-4">Menu</h2>
-          <Link to="#" className="text-gray-700 hover:text-black text-lg font-medium">
+          <Link
+            to="#"
+            className="text-gray-700 hover:text-black text-lg font-medium"
+          >
             Men
           </Link>
-          <Link to="#" className="text-gray-700 hover:text-black text-lg font-medium">
+          <Link
+            to="#"
+            className="text-gray-700 hover:text-black text-lg font-medium"
+          >
             Women
           </Link>
-          <Link to="#" className="text-gray-700 hover:text-black text-lg font-medium">
+          <Link
+            to="#"
+            className="text-gray-700 hover:text-black text-lg font-medium"
+          >
             Topwear
           </Link>
-          <Link to="#" className="text-gray-700 hover:text-black text-lg font-medium">
+          <Link
+            to="#"
+            className="text-gray-700 hover:text-black text-lg font-medium"
+          >
             Bottomwear
           </Link>
         </div>

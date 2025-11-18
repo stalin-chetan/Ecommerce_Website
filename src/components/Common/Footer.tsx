@@ -120,13 +120,13 @@ const Footer = () => {
         <div className="text-gray-500">
           <p>Call Us</p>
           <FiPhoneCall className="inline-block mr-2" />
-          <span className="ml-2">+91 9876543210</span>
+          <span className="ml-2">+977 9812345678</span>
         </div>
       </div>
       {/* footer bottom */}
       <div className="container mx-auto mt-12 px-4 lg:px-0 border-t border-gray-200 pt-6">
         <p className="text-gray-500 text-sm tracking-tighter text-center">
-          ©2025, CompileTab, All Rights REserved
+          ©2025 All Rights REserved
         </p>
       </div>
     </footer>
