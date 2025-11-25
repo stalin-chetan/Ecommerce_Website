@@ -2,14 +2,13 @@ import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import AdminSidebar from "./AdminSidebar";
 import { Outlet } from "react-router-dom";
-import AdminHomePage from "../../pages/AdminHomePage";
-import UserManagement from "./UserManagement";
 
 const AdminLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  
   return (
     <div className="min-h-screen flex flex-col md:flex-row relative">
       {/* Mobile toggle button */}
@@ -36,12 +35,10 @@ const AdminLayout = () => {
       >
         <AdminSidebar />
       </div>
-      {/* Main Content */}
-      <div className="grow p-6 overflow-auto">
-        <AdminHomePage />
-        <UserManagement />
+      {/* Main Content - Only Outlet */}
+      <div className="grow p-6 overflow-y-auto h-screen">
+        <Outlet />
       </div>
-      <Outlet />
     </div>
   );
 };

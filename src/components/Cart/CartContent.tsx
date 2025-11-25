@@ -1,7 +1,8 @@
 import { RiDeleteBin3Line } from "react-icons/ri";
+import { useState } from "react";
 
 const CartContent = () => {
-  const cartProducts = [
+  const [cartProducts, setCartProducts] = useState([
     {
       productId: 1,
       name: "Product 1",
@@ -29,45 +30,75 @@ const CartContent = () => {
       color: "Green",
       imageUrl: "https://picsum.photos/200?random=3",
     },
-  ];
+  ]);
+
+  const handleQuantityChange = (productId: number, change: number) => {
+    setCartProducts(prevProducts =>
+      prevProducts.map(product =>
+        product.productId === productId
+          ? { 
+              ...product, 
+              quantity: Math.max(1, product.quantity + change) 
+            }
+          : product
+      )
+    );
+  };
+
+  const handleRemoveItem = (productId: number) => {
+    setCartProducts(prevProducts =>
+      prevProducts.filter(product => product.productId !== productId)
+    );
+  };
 
   return (
     <div className="p-4">
       {cartProducts.map((product, index) => (
         <div
           key={index}
-          className="flex items-start justify-between py-4 border-b"
+          className="flex flex-col sm:flex-row sm:items-start justify-between py-4 border-b gap-4"
         >
-          <div className="flex items-start">
+          <div className="flex items-start flex-1">
             <img
               src={product.imageUrl}
               alt={product.name}
-              className="w-20 h-24 object-cover rounded mr-4"
+              className="w-16 h-20 sm:w-20 sm:h-24 object-cover rounded mr-4"
             />
-            <div>
-              <h3 className="font-semibold">{product.name}</h3>
-              <p className="text-sm text-gray-500">
+            <div className="flex-1">
+              <h3 className="font-semibold text-sm sm:text-base">{product.name}</h3>
+              <p className="text-xs sm:text-sm text-gray-500">
                 size: {product.size} | color: {product.color}
               </p>
 
               <div className="flex items-center mt-2">
-                <button className="border rounded px-2 py-1 text-xl font-medium">
+                <button 
+                  onClick={() => handleQuantityChange(product.productId, -1)}
+                  className="border rounded w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-sm sm:text-base font-medium hover:bg-gray-100"
+                >
                   -
                 </button>
-                <span className="mx-4">{product.quantity}</span>
-                <button className="border rounded px-2 py-1 text-xl font-medium">
+                <span className="mx-2 sm:mx-4 text-sm sm:text-base">{product.quantity}</span>
+                <button 
+                  onClick={() => handleQuantityChange(product.productId, 1)}
+                  className="border rounded w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-sm sm:text-base font-medium hover:bg-gray-100"
+                >
                   +
                 </button>
               </div>
             </div>
           </div>
 
-          <p className="font-semibold">
-            Rs:{(product.price * product.quantity).toFixed(2)}
-          </p>
-          <button>
-            <RiDeleteBin3Line className="h-6 w-6 text-gray-600 mt-2" />
-          </button>
+          <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto">
+            <p className="font-semibold text-sm sm:text-base">
+              Rs:{(product.price * product.quantity).toFixed(2)}
+            </p>
+            <button 
+              onClick={() => handleRemoveItem(product.productId)}
+              className="p-1 sm:p-2 hover:bg-red-50 rounded-full transition-colors"
+            >
+              <RiDeleteBin3Line className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 hover:text-red-500" />
+            </button>
+          </div>
         </div>
       ))}
     </div>

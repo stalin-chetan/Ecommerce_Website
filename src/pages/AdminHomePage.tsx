@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 interface Order {
   id: number;
   user: {
@@ -32,7 +31,7 @@ const AdminHomePage = () => {
         <div className="p-4 shadow-md rounded-lg">
           <h2 className="text-xl font-semibold">Total Orders</h2>
           <p className="text-2xl ">100</p>
-          <Link to="/admin/orders" className="text-blue-500 hover:underline">
+          <Link to= "/admin/orders" className="text-blue-500 hover:underline">
             Manage Orders
           </Link>
         </div>

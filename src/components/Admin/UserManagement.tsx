@@ -1,7 +1,14 @@
 import { useState } from "react";
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+}
+
 const UserManagement = () => {
-  const [users] = useState([
+  const [users, setUsers] = useState<User[]>([
     {
       id: 1,
       name: "Chetan Thapa",
@@ -29,7 +36,17 @@ const UserManagement = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
-
+    
+    // Add new user to the users array
+    const newUser: User = {
+      id: users.length + 1, // Simple ID generation
+      name: formData.name,
+      email: formData.email,
+      role: formData.role,
+    };
+    
+    setUsers(prevUsers => [...prevUsers, newUser]);
+    
     setFormData({
       name: "",
       email: "",
@@ -38,14 +55,26 @@ const UserManagement = () => {
     });
   };
 
-  const handleRoleChange = (userID: number, newRole: string) => {
-    console.log({ id: userID, role: newRole });
+  const handleRoleChange = (userId: number, newRole: string) => {
+    console.log({ id: userId, role: newRole });
+    
+    // Update the user's role in state
+    setUsers(prevUsers => 
+      prevUsers.map(user => 
+        user.id === userId ? { ...user, role: newRole } : user
+      )
+    );
   };
+
   const handleDeleteUser = (userId: number) => {
-    if (window.confirm("Are you sure want to delete this user?")) {
+    if (window.confirm("Are you sure you want to delete this user?")) {
       console.log("deleting user with ID", userId);
+      
+      // Remove user from state
+      setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
     }
   };
+
   return (
     <div className="max-w-7xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-6">User Management</h2>
