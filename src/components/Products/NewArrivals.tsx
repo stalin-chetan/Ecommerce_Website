@@ -110,14 +110,14 @@ const NewArrivals = () => {
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
       const scrollAmount = 300;
-      const newScrollLeft = 
-        direction === "left" 
+      const newScrollLeft =
+        direction === "left"
           ? scrollRef.current.scrollLeft - scrollAmount
           : scrollRef.current.scrollLeft + scrollAmount;
-      
+
       scrollRef.current.scrollTo({
         left: newScrollLeft,
-        behavior: "smooth"
+        behavior: "smooth",
       });
 
       // Update button visibility after scroll
@@ -142,12 +142,14 @@ const NewArrivals = () => {
   return (
     <section className="relative">
       <div className="container mx-auto text-center mb-10 px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Explore New Arrivals</h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
+          Explore New Arrivals
+        </h2>
 
         <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 px-4">
           Discover the latest styles off the runway, freshly added.
         </p>
-        
+
         {/* Scroll Buttons */}
         {showLeftButton && (
           <button
@@ -158,7 +160,7 @@ const NewArrivals = () => {
             <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         )}
-        
+
         {showRightButton && (
           <button
             onClick={() => scroll("right")}
@@ -170,8 +172,8 @@ const NewArrivals = () => {
         )}
 
         {/* HORIZONTAL SCROLL AREA */}
-        <div 
-          ref={scrollRef} 
+        <div
+          ref={scrollRef}
           className="overflow-x-auto scroll-smooth scrollbar-hide"
           onScroll={handleScroll}
         >
@@ -186,8 +188,12 @@ const NewArrivals = () => {
                   alt={item.images[0].altText}
                   className="w-full h-32 sm:h-40 lg:h-48 object-cover rounded-md"
                 />
-                <h3 className="mt-2 font-semibold text-sm sm:text-base lg:text-lg">{item.name}</h3>
-                <p className="text-gray-700 text-sm sm:text-base">${item.price}</p>
+                <h3 className="mt-2 font-semibold text-sm sm:text-base lg:text-lg">
+                  {item.name}
+                </h3>
+                <p className="text-gray-700 text-sm sm:text-base">
+                  ${item.price}
+                </p>
                 <button className="w-full mt-2 bg-black text-white py-2 px-3 sm:px-4 rounded-md text-xs sm:text-sm hover:bg-gray-800 transition-colors duration-200">
                   Add to Cart
                 </button>

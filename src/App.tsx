@@ -21,7 +21,7 @@ import UserManagement from "./components/Admin/UserManagement";
 import ProductManagement from "./components/Admin/ProductManagement";
 import EditProductPage from "./components/Admin/EditProductPage";
 import OrderManagement from "./components/Admin/OrderManagement";
-
+import AdminProtectedRoute from "./components/Admin/AdminProtectedRoute";
 
 const App = () => {
   return (
@@ -47,7 +47,14 @@ const App = () => {
         </Route>
 
         {/* ================== ADMIN ROUTES ================== */}
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route
+  path="/admin"
+  element={
+    <AdminProtectedRoute>
+      <AdminLayout />
+    </AdminProtectedRoute>
+  }
+>
           <Route index element={<AdminHomePage />} />
           <Route path="users" element={<UserManagement />} />
           <Route path="products" element={<ProductManagement />} />
