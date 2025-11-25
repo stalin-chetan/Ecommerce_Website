@@ -1,12 +1,21 @@
 import { IoMdClose } from "react-icons/io";
 import React from "react";
 import CartContent from "../Cart/CartContent";
+import { useNavigate } from "react-router-dom";
+
 interface CartDrawerProps {
   drawerOpen: boolean;
   toggleCartDrawer: () => void;
 }
 
 const CartDrawer: React.FC<CartDrawerProps> = ({ drawerOpen, toggleCartDrawer }) => {
+  const navigate = useNavigate();
+  
+  const handleCheckout = () => {
+    toggleCartDrawer();
+    navigate("/checkout");
+  }
+
   return (
     <div
       className={`fixed top-0 right-0 w-3/4 sm:w-1/2 md:[30rem] h-full bg-white shadow-lg transform transition-transform duration-300 flex flex-col z-50 ${
@@ -25,9 +34,9 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ drawerOpen, toggleCartDrawer })
         <CartContent />
         </div>
         <div className="p-4 bg-white sticky bottom-0">
-            <button className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800">Checkout</button>
+            <button onClick={handleCheckout} className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800">Checkout</button>
             <p className="text-sm tracking-tighter text-gray-500 mt-2 text-center">shipping, taxes and dicsount codes</p>
-    </div>
+        </div>
     </div>
   );
 };
